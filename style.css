@@ -130,7 +130,6 @@ h2 i { /* Style for icons in headings */
 #projects .project-card:focus-within { /* focus-within for keyboard nav affecting parent */
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Slightly more pronounced shadow */
-    /* border-color: #0779e4; */ /* Optional: accent border on hover */
 }
 
 #projects .project-card h3 {
@@ -138,6 +137,24 @@ h2 i { /* Style for icons in headings */
     margin-bottom: 10px;
     color: #0779e4; /* Accent color */
 }
+
+/* Styling for linked project titles */
+#projects .project-card h3 a {
+    color: inherit; /* Inherit the h3's color */
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+#projects .project-card h3 a:hover,
+#projects .project-card h3 a:focus {
+    color: #055aab; /* Darker shade on hover/focus for title link */
+    text-decoration: underline;
+}
+#projects .project-card h3 a:focus {
+    outline: 1px dotted #055aab; /* Subtle outline for focused title link */
+    outline-offset: 2px;
+}
+
 
 #projects .project-card p {
     margin-bottom: 15px;
@@ -170,7 +187,7 @@ h2 i { /* Style for icons in headings */
 #projects .project-links p em { /* Specific styling for the italicized note */
     background-color: #6c757d; /* A neutral color for notes */
     color: #fff;
-    font-style: normal; /* Override em italic if desired, or keep it */
+    font-style: normal; 
 }
 
 
@@ -184,7 +201,7 @@ h2 i { /* Style for icons in headings */
 }
 
 #projects .project-links a i { /* Icon spacing */
-    margin-left: 5px; /* Switched to margin-left assuming icon is after text */
+    margin-left: 5px; 
 }
 
 
@@ -225,7 +242,7 @@ h2 i { /* Style for icons in headings */
     background: #0779e4;
     color: #fff;
     transform: translateY(-2px);
-    outline: none; /* Or a subtle outline if preferred */
+    outline: none; 
 }
 #skills ul.skills-tag-list li:focus {
     box-shadow: 0 0 0 2px #055aab; /* Example focus ring */
@@ -233,18 +250,18 @@ h2 i { /* Style for icons in headings */
 
 
 /* Contact Section */
-#contact .contact-info-list { /* Changed from #contact ul */
+#contact .contact-info-list { 
     list-style: none;
     padding: 0;
     text-align: center;
 }
 
-#contact .contact-info-list li { /* Changed from #contact li */
+#contact .contact-info-list li { 
     margin-bottom: 15px;
     font-size: 1.1em;
 }
 
-#contact .contact-info-list li i { /* Changed from #contact i */
+#contact .contact-info-list li i { 
     margin-right: 10px;
     color: #0779e4;
     width: 20px;
@@ -305,11 +322,6 @@ footer a:focus {
         display: block; /* Stack nav items */
         padding: 10px 0; /* Add vertical padding */
     }
-
-    /* Project cards already use auto-fit, so direct stacking might only be needed for very small screens */
-    /* #projects .projects-container {
-           grid-template-columns: 1fr; 
-    } */
 
     #skills .skills-categories {
         grid-template-columns: 1fr; /* Stack skill categories */

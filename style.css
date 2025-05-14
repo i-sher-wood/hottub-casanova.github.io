@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     line-height: 1.6;
@@ -16,7 +20,7 @@ body {
     max-width: 960px;
     margin: auto;
     padding: 0 20px;
-    overflow: hidden; /* Contains floats */
+    overflow: hidden; /* Contains floats, though less critical with flex/grid */
 }
 
 /* Header */
@@ -24,14 +28,14 @@ header {
     background: #333; /* Dark background for header */
     color: #fff;
     padding-top: 30px;
-    padding-bottom: 20px; /* Added padding bottom */
+    padding-bottom: 20px;
     min-height: 70px;
     border-bottom: #0779e4 3px solid; /* Accent color */
     text-align: center; /* Center header content */
 }
 
 header h1 {
-    margin-bottom: 5px; /* Reduced margin */
+    margin-bottom: 5px;
 }
 
 header .tagline {
@@ -44,17 +48,17 @@ header nav {
     margin-top: 10px; /* Space above nav links */
 }
 
-header ul {
+header nav ul {
     padding: 0;
     list-style: none;
 }
 
-header li {
+header nav li {
     display: inline;
-    padding: 0 15px; /* Increased spacing */
+    padding: 0 15px;
 }
 
-header a {
+header nav a {
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
@@ -62,10 +66,16 @@ header a {
     transition: color 0.3s ease;
 }
 
-header a:hover {
-    color: #0779e4; /* Accent color on hover */
+header nav a:hover,
+header nav a:focus {
+    color: #0779e4; /* Accent color on hover/focus */
     font-weight: bold;
 }
+header nav a:focus {
+    outline: 2px solid #0779e4;
+    outline-offset: 2px;
+}
+
 
 /* Main Content Sections */
 main section {
@@ -91,7 +101,7 @@ h2 i { /* Style for icons in headings */
 
 /* About Section */
 #about p {
-    text-align: center; /* Center the about text */
+    text-align: center;
     max-width: 700px; /* Limit width for readability */
     margin: 0 auto; /* Center the paragraph block */
     font-size: 1.1em;
@@ -101,9 +111,8 @@ h2 i { /* Style for icons in headings */
 /* Projects Section */
 #projects .projects-container {
     display: grid;
-    /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-    grid-template-columns: repeat(2, 1fr); /* Default to 2 columns */
-    gap: 20px; /* Space between cards */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 25px; /* Space between cards */
 }
 
 #projects .project-card {
@@ -112,12 +121,16 @@ h2 i { /* Style for icons in headings */
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex; /* Added for flex layout */
+    flex-direction: column; /* Stack content vertically */
 }
 
-#projects .project-card:hover {
+#projects .project-card:hover,
+#projects .project-card:focus-within { /* focus-within for keyboard nav affecting parent */
     transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Slightly more pronounced shadow */
+    /* border-color: #0779e4; */ /* Optional: accent border on hover */
 }
 
 #projects .project-card h3 {
@@ -128,89 +141,130 @@ h2 i { /* Style for icons in headings */
 
 #projects .project-card p {
     margin-bottom: 15px;
+    flex-grow: 1; /* Allow paragraph to take available space, pushing link to bottom */
 }
+#projects .project-card p:last-of-type { /* Reduce margin for last p if it's not the link container */
+    margin-bottom: 10px;
+}
+
 
 #projects .project-card strong {
     color: #555;
 }
 
-#projects .project-links a {
-    margin-right: 10px;
+#projects .project-links {
+    margin-top: auto; /* Pushes this div to the bottom of the card if card is flex container */
+}
+
+#projects .project-links a,
+#projects .project-links p em { /* Style for the "Private Repository" text too */
+    display: inline-block;
     text-decoration: none;
     color: #fff;
     background-color: #0779e4; /* Accent color */
     padding: 8px 15px;
     border-radius: 5px;
-    display: inline-block; /* Make buttons align well */
     transition: background-color 0.3s ease;
+    margin-top: 10px; /* Space above the link/note */
+}
+#projects .project-links p em { /* Specific styling for the italicized note */
+    background-color: #6c757d; /* A neutral color for notes */
+    color: #fff;
+    font-style: normal; /* Override em italic if desired, or keep it */
 }
 
-#projects .project-links a:hover {
-    background-color: #055aab; /* Darker shade on hover */
+
+#projects .project-links a:hover,
+#projects .project-links a:focus {
+    background-color: #055aab; /* Darker shade on hover/focus */
+}
+#projects .project-links a:focus {
+    outline: 2px solid #055aab;
+    outline-offset: 2px;
 }
 
 #projects .project-links a i { /* Icon spacing */
-    margin-right: 5px;
+    margin-left: 5px; /* Switched to margin-left assuming icon is after text */
 }
+
 
 /* Skills Section */
-#skills .skills-list {
+#skills .skills-categories {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    text-align: center;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Categories side-by-side */
+    gap: 30px;
 }
 
-#skills h3 {
-    margin-bottom: 10px;
-    color: #555;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 5px;
+#skills .skills-categories h3 {
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 2px solid #0779e4;
+    padding-bottom: 8px;
+    font-size: 1.3em;
 }
 
-#skills ul {
+#skills ul.skills-tag-list {
     list-style: none;
     padding: 0;
+    margin-top: 10px;
 }
 
-#skills li {
-    background: #e4e4e4;
+#skills ul.skills-tag-list li {
+    background: #f0f0f0;
     color: #333;
     padding: 8px 15px;
     margin: 5px;
     border-radius: 5px;
-    display: inline-block; /* Make skills tags */
+    display: inline-block;
     font-size: 0.95em;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
+
+#skills ul.skills-tag-list li:hover,
+#skills ul.skills-tag-list li:focus { /* Added focus state */
+    background: #0779e4;
+    color: #fff;
+    transform: translateY(-2px);
+    outline: none; /* Or a subtle outline if preferred */
+}
+#skills ul.skills-tag-list li:focus {
+    box-shadow: 0 0 0 2px #055aab; /* Example focus ring */
+}
+
 
 /* Contact Section */
-#contact ul {
+#contact .contact-info-list { /* Changed from #contact ul */
     list-style: none;
     padding: 0;
-    text-align: center; /* Center contact links */
+    text-align: center;
 }
 
-#contact li {
+#contact .contact-info-list li { /* Changed from #contact li */
     margin-bottom: 15px;
     font-size: 1.1em;
 }
 
-#contact i {
+#contact .contact-info-list li i { /* Changed from #contact i */
     margin-right: 10px;
-    color: #0779e4; /* Accent color */
-    width: 20px; /* Align icons */
+    color: #0779e4;
+    width: 20px;
     text-align: center;
 }
 
 #contact a {
-    color: #0779e4; /* Accent color */
+    color: #0779e4;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
-#contact a:hover {
+#contact a:hover,
+#contact a:focus {
     color: #333;
     text-decoration: underline;
+}
+#contact a:focus {
+    outline: 2px solid #0779e4;
+    outline-offset: 2px;
 }
 
 /* Footer */
@@ -231,8 +285,12 @@ footer a {
     text-decoration: none;
 }
 
-footer a:hover {
+footer a:hover,
+footer a:focus {
     text-decoration: underline;
+}
+footer a:focus {
+    outline: 1px dotted #fff; /* Simple outline for footer links */
 }
 
 /* Responsive Design */
@@ -248,13 +306,18 @@ footer a:hover {
         padding: 10px 0; /* Add vertical padding */
     }
 
-    #projects .projects-container {
-         grid-template-columns: 1fr; /* Stack project cards on smaller screens */
-    }
+    /* Project cards already use auto-fit, so direct stacking might only be needed for very small screens */
+    /* #projects .projects-container {
+           grid-template-columns: 1fr; 
+    } */
 
-    #skills .skills-list {
+    #skills .skills-categories {
         grid-template-columns: 1fr; /* Stack skill categories */
     }
+    #skills .skills-categories h3 {
+        font-size: 1.2em;
+    }
+
 
     .container {
         padding: 0 15px;
@@ -262,5 +325,26 @@ footer a:hover {
 
     h2 {
         font-size: 1.8em;
+    }
+}
+
+@media (max-width: 480px) { /* Additional breakpoint for smaller mobile devices */
+    #projects .projects-container {
+        grid-template-columns: 1fr; /* Ensure single column for small screens */
+    }
+     #projects .project-card {
+        padding: 20px;
+    }
+    h2 {
+        font-size: 1.6em;
+    }
+    header h1 {
+        font-size: 1.8em;
+    }
+    header nav a {
+        font-size: 15px;
+    }
+    #about p, #contact .contact-info-list li {
+        font-size: 1em;
     }
 }

@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cole Sherwood - Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Optional: Add FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body>
 
@@ -28,17 +29,17 @@
     <main class="container">
 
         <section id="about">
-            <h2><i class="fas fa-user"></i> About Me</h2>
+            <h2><i class="fas fa-user" aria-hidden="true"></i> About Me</h2>
             <p>
                 Hi! I'm Cole Sherwood, a Computer Science student at Weber State University graduating in April 2025.
-                I specialize in full-stack development and database administration, with a passion for teaching and building 
-                useful web applications. I'm currently working as an Adjunct Instructor and Web Developer at Weber State University, 
+                I specialize in full-stack development and database administration, with a passion for teaching and building
+                useful web applications. I'm currently working as an Adjunct Instructor and Web Developer at Weber State University,
                 helping others gain essential computer and programming skills.
             </p>
         </section>
 
         <section id="projects">
-            <h2><i class="fas fa-laptop-code"></i> Projects</h2>
+            <h2><i class="fas fa-laptop-code" aria-hidden="true"></i> Projects</h2>
             <div class="projects-container">
 
                 <article class="project-card">
@@ -47,6 +48,9 @@
                         Collaborated on a full-stack web application that benchmarks and visualizes the performance of various data structures under different loads.
                     </p>
                     <p><strong>Technologies:</strong> MongoDB, Express, React, Node.js</p>
+                    <div class="project-links">
+                        <a href="https://github.com/bradleypeterson/AlgoGaugeMERN" target="_blank" rel="noopener noreferrer">View on GitHub <i class="fab fa-github" aria-hidden="true"></i></a>
+                    </div>
                 </article>
 
                 <article class="project-card">
@@ -55,6 +59,9 @@
                         Developed a .NET web application that replicates the core features of the Canvas LMS including course content, user accounts, and automation with Selenium for testing.
                     </p>
                     <p><strong>Technologies:</strong> C#, .NET, MySQL, Selenium</p>
+                    <div class="project-links">
+                        <a href="https://github.com/i-sher-wood/LearnLubbers" target="_blank" rel="noopener noreferrer">View on GitHub <i class="fab fa-github" aria-hidden="true"></i></a>
+                    </div>
                 </article>
 
                 <article class="project-card">
@@ -63,27 +70,52 @@
                         Built tools to automate database backup and recovery for a simulated environment, ensuring robust data protection and minimizing data loss.
                     </p>
                     <p><strong>Technologies:</strong> Python, MongoDB, MySQL</p>
+                    <div class="project-links">
+                        <p><em>Private Repository / Details available upon request</em></p>
+                        </div>
                 </article>
 
             </div>
         </section>
 
         <section id="skills">
-            <h2><i class="fas fa-tools"></i> Skills</h2>
-            <ul>
-                <li>Languages: Python, C#, JavaScript, SQL, HTML, CSS</li>
-                <li>Frameworks: .NET, Express, React, Node.js</li>
-                <li>Tools: Git, MySQL, MongoDB, Selenium</li>
-                <li>Soft Skills: Teaching, Communication, Mentorship</li>
-                <li>Fluent in Spanish</li>
-            </ul>
+            <h2><i class="fas fa-tools" aria-hidden="true"></i> Skills</h2>
+            <div class="skills-categories">
+                <div>
+                    <h3>Languages</h3>
+                    <ul class="skills-tag-list">
+                        <li>Python</li> <li>C#</li> <li>JavaScript</li> <li>SQL</li> <li>HTML</li> <li>CSS</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Frameworks & Libraries</h3>
+                    <ul class="skills-tag-list">
+                        <li>.NET</li> <li>Express</li> <li>React</li> <li>Node.js</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Tools & Platforms</h3>
+                    <ul class="skills-tag-list">
+                        <li>Git</li> <li>MySQL</li> <li>MongoDB</li> <li>Selenium</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Soft Skills & Other</h3>
+                    <ul class="skills-tag-list">
+                        <li>Teaching</li> <li>Communication</li> <li>Mentorship</li>
+                        <li>Fluent in Spanish</li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
         <section id="contact">
-            <h2><i class="fas fa-envelope"></i> Contact</h2>
-            <p>Email: <a href="mailto:sherwoodcoleson@gmail.com">sherwoodcoleson@gmail.com</a></p>
-            <p>Phone: (801) 695-0916</p>
-            <p>Location: Centerville, UT</p>
+            <h2><i class="fas fa-envelope" aria-hidden="true"></i> Contact</h2>
+            <ul class="contact-info-list">
+                <li><i class="fas fa-envelope-open-text" aria-hidden="true"></i> Email: <a href="mailto:sherwoodcoleson@gmail.com">sherwoodcoleson@gmail.com</a></li>
+                <li><i class="fas fa-phone" aria-hidden="true"></i> Phone: <a href="tel:+18016950916">(801) 695-0916</a></li>
+                <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Location: Centerville, UT</li>
+            </ul>
         </section>
 
     </main>
